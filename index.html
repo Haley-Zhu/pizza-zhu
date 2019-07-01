@@ -24,8 +24,8 @@
 
     .details-container {
       display: grid;
-      grid-template-columns:repeat(3, 1fr); 
-      grid-gap:35px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 35px;
     }
 
     .detail {
@@ -34,17 +34,17 @@
       grid-auto-rows: 30px 40px;
     }
 
-    .detail--error > .detail__message {
+    .detail--error>.detail__message {
       color: red;
     }
 
-    .detail--error > input,
-    .detail--error > input:focus {
+    .detail--error>input,
+    .detail--error>input:focus {
       border-color: red;
       outline-color: red;
     }
 
-    .detail > .detail__message {
+    .detail>.detail__message {
       justify-self: end;
       font-size: 14px;
     }
@@ -52,6 +52,50 @@
     .detail > input {
       grid-column-start: 1;
       grid-column-end: 3;
+    }
+
+    .sizes-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+
+    .size {
+      --standard-width: 100px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: 15px;
+    }
+
+    .size > img {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      align-self: center;
+      border: 5px solid red;
+      /* todo：border得是个圆形 */
+      /* border-radius: calc(var(--standard-width) / 2); */
+    }
+
+    .size > span {
+      align-self: end;
+    }
+
+    /* todo：p的位置没有顶侧对齐 */
+    .size > p {
+      align-self: start;
+    }
+
+    .size--small > img {
+      width: calc(var(--standard-width) * 0.8);
+    }
+
+    .size--medium > img {
+      width: var(--standard-width);
+    }
+
+    .size--large > img {
+      width: calc(var(--standard-width) * 1.2);
     }
   </style>
 </head>
@@ -95,7 +139,23 @@
     </section>
     <section class="sizes">
       <h2>Select your sizes</h2>
-      <div class="sizes-container"></div>
+      <div class="sizes-container">
+        <div class="size size--small">
+          <img src="./assets/size.png" alt="small">
+          <span>Small</span>
+          <p>$9.99</p>
+        </div>
+        <div class="size size--medium">
+          <img src="./assets/size.png" alt="small">
+          <span>Medium</span>
+          <p>$10.99</p>
+        </div>
+        <div class="size size--large">
+          <img src="./assets/size.png" alt="small">
+          <span>Large</span>
+          <p>$11.99</p>
+        </div>
+      </div>
     </section>
     <section class="toppings">
       <h2>Choose your toppings</h2>
