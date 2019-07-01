@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>zhu Pizza</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    /* input, button {
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+      border:0;
+    } */
+
+    .pizza-creator {
+      padding: 20px 40px;
+    }
+
+    .details-container {
+      display: grid;
+      grid-template-columns:repeat(3, 1fr); 
+      grid-gap:35px;
+    }
+
+    .detail {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-auto-rows: 30px 40px;
+    }
+
+    .detail--error > .detail__message {
+      color: red;
+    }
+
+    .detail--error > input,
+    .detail--error > input:focus {
+      border-color: red;
+      outline-color: red;
+    }
+
+    .detail > .detail__message {
+      justify-self: end;
+      font-size: 14px;
+    }
+
+    .detail > input {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="pizza-creator">
+    <section class="details">
+      <h2>Enter your details</h2>
+      <div class="details-container">
+        <div class="detail detail--error">
+          <label for="name">NAME</label>
+          <span class="detail__message">Please input your name</span>
+          <input type="text">
+        </div>
+        <div class="detail">
+          <label for="email">EMAIL</label>
+          <span class="detail__message">Please input your email</span>
+          <input type="text">
+        </div>
+        <div class="detail">
+          <label for="name">CONFIRM EMAIL</label>
+          <span class="detail__message">Please input your confirm email</span>
+          <input type="text">
+        </div>
+        <div class="detail">
+          <label for="name">ADDRESS</label>
+          <span class="detail__message">Please input your address</span>
+          <input type="text">
+        </div>
+        <div class="detail">
+          <label for="name">POSTCODE</label>
+          <span class="detail__message">Please input your postcode</span>
+          <input type="text">
+        </div>
+        <div class="detail">
+          <label for="name">CONTACT NUMBER</label>
+          <span class="detail__message">Please input your contact number</span>
+          <input type="text">
+        </div>
+      </div>
+    </section>
+    <section class="sizes">
+      <h2>Select your sizes</h2>
+      <div class="sizes-container"></div>
+    </section>
+    <section class="toppings">
+      <h2>Choose your toppings</h2>
+      <div class="toppings-container"></div>
+    </section>
+    <section class="summary">
+      <h2>Summary</h2>
+    </section>
+    <button type="submit">Place order</button>
+  </section>
+</body>
+
+</html>
