@@ -11,13 +11,6 @@
       margin: 0;
     }
 
-    /* input, button {
-      outline: none;
-      -webkit-appearance: none;
-      border-radius: 0;
-      border:0;
-    } */
-
     .pizza-creator {
       padding: 20px 40px;
     }
@@ -49,7 +42,7 @@
       font-size: 14px;
     }
 
-    .detail > input {
+    .detail>input {
       grid-column-start: 1;
       grid-column-end: 3;
     }
@@ -68,35 +61,92 @@
       grid-column-gap: 15px;
     }
 
-    .size > img {
+    .size>img {
       grid-row-start: 1;
       grid-row-end: 3;
       align-self: center;
-      border: 5px solid red;
+      border: 5px solid rgba(117, 117, 117, 0);
       /* todo：border得是个圆形 */
       /* border-radius: calc(var(--standard-width) / 2); */
     }
 
-    .size > span {
+    .size>img:hover {
+      border: 5px solid rgba(117, 117, 117, 1);
+      /* todo：border得是个圆形 */
+      /* border-radius: calc(var(--standard-width) / 2); */
+    }
+
+    .size>span {
       align-self: end;
     }
 
     /* todo：p的位置没有顶侧对齐 */
-    .size > p {
+    .size>p {
       align-self: start;
     }
 
-    .size--small > img {
+    .size--small>img {
       width: calc(var(--standard-width) * 0.8);
     }
 
-    .size--medium > img {
+    .size--medium>img {
       width: var(--standard-width);
     }
 
-    .size--large > img {
+    .size--large>img {
       width: calc(var(--standard-width) * 1.2);
     }
+
+    .size--select {
+      cursor: pointer;
+    }
+
+    .size--select>span {
+      color: lightskyblue;
+    }
+
+    .toppings-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 45px);
+      grid-row-gap: 20px;
+      grid-column-gap: 40px;
+    }
+    .topping {
+      display: grid;
+      grid-template-columns: auto 1fr 40px 50px 40px;
+      height: 45px;
+      width: 370px;
+      background-color: rgb(240, 240, 240);
+    }
+
+    .topping>img {
+      width: 50px;
+      height: 45px;
+      background-color: rgb(212, 212, 212);
+    }
+
+    .topping>span {
+      line-height: 45px;
+      padding-left: 20px;
+    }
+
+    .summary ul {
+      padding-inline-start: 0;
+    }
+    .summary ul>li {
+      list-style: none;
+    }
+    .summary-item {
+      height: 25px;
+      display: grid;
+      grid-template-columns: auto 20px 20px 20px 1fr;
+    }
+
+    .summary-item > button {
+      height: 25px;
+    }
+
   </style>
 </head>
 
@@ -140,7 +190,7 @@
     <section class="sizes">
       <h2>Select your sizes</h2>
       <div class="sizes-container">
-        <div class="size size--small">
+        <div class="size size--small size--select">
           <img src="./assets/size.png" alt="small">
           <span>Small</span>
           <p>$9.99</p>
@@ -159,10 +209,119 @@
     </section>
     <section class="toppings">
       <h2>Choose your toppings</h2>
-      <div class="toppings-container"></div>
+      <div class="toppings-container">
+        <div class="topping">
+          <img src="./assets/toppings/anchovy.svg" alt="anchovy">
+          <span>Anchovy</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/bacon.svg" alt="bacon">
+          <span>Bacon</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/basil.svg" alt="basil">
+          <span>Basil</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/chili.svg" alt="chili">
+          <span>Chili</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/mozzarella.svg" alt="mozzarella">
+          <span>Mozzarella</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/mushroom.svg" alt="mushroom">
+          <span>Mushroom</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/olive.svg" alt="olive">
+          <span>Olive</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/onion.svg" alt="onion">
+          <span>Onion</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/pepper.svg" alt="pepper">
+          <span>Pepper</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/pepperoni.svg" alt="pepperoni">
+          <span>Pepperoni</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/peppers.svg" alt="peppers">
+          <span>Peppers</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/sweetcorn.svg" alt="sweetcorn">
+          <span>Sweetcorn</span>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+      </div>
     </section>
     <section class="summary">
       <h2>Summary</h2>
+      <ul>
+        <li class="summary-itemsize">
+          <p>Pizza(Small)</p>
+          <p>$9.9</p>
+        </li>
+        <li class="summary-item">
+          <span>Anchovy</span>
+          <button>-</button>
+          <p>0</p>
+          <button>+</button>
+          <p>$0.9</p>
+        </li>
+        <!-- <li class="summary-item">Bacon</li>
+        <li class="summary-item">Basil</li>
+        <li class="summary-item">Chili</li>
+        <li class="summary-item">Mozzarella</li>
+        <li class="summary-item">Mushroom</li>
+        <li class="summary-item">Olive</li>
+        <li class="summary-item">Onion</li>
+        <li class="summary-item">Pepper</li>
+        <li class="summary-item">Pepperoni</li>
+        <li class="summary-item">Peppers</li>
+        <li class="summary-item">Sweetcorn</li> -->
+      </ul>
     </section>
     <button type="submit">Place order</button>
   </section>
