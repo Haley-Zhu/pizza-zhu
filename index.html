@@ -126,9 +126,19 @@
       background-color: rgb(212, 212, 212);
     }
 
-    .topping>span {
+    .topping>.topping__name,
+    .topping>.topping__amount {
       line-height: 45px;
       padding-left: 20px;
+    }
+
+    .topping>button {
+      border: 0;
+    }
+
+    .topping>button:hover {
+      background-color: blue;
+      cursor: pointer;
     }
 
     .summary ul {
@@ -136,15 +146,40 @@
     }
     .summary ul>li {
       list-style: none;
+      height: 40px;
     }
+
+    .summary-itemsize {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+
     .summary-item {
-      height: 25px;
+      /* height: 25px; */
       display: grid;
       grid-template-columns: auto 20px 20px 20px 1fr;
     }
 
     .summary-item > button {
       height: 25px;
+    }
+
+    .item__price {
+      justify-self: end;
+    }
+
+    .item__amount {
+      justify-self: center;
+    }
+
+    .placeorder {
+      background-color: rgb(42, 177, 42);
+      width: 100%;
+      height: 45px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 20px;
     }
 
   </style>
@@ -212,86 +247,86 @@
       <div class="toppings-container">
         <div class="topping">
           <img src="./assets/toppings/anchovy.svg" alt="anchovy">
-          <span>Anchovy</span>
+          <span class="topping__name">Anchovy</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/bacon.svg" alt="bacon">
-          <span>Bacon</span>
+          <span class="topping__name">Bacon</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/basil.svg" alt="basil">
-          <span>Basil</span>
+          <span class="topping__name">Basil</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/chili.svg" alt="chili">
-          <span>Chili</span>
+          <span class="topping__name">Chili</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/mozzarella.svg" alt="mozzarella">
-          <span>Mozzarella</span>
+          <span class="topping__name">Mozzarella</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/mushroom.svg" alt="mushroom">
-          <span>Mushroom</span>
+          <span class="topping__name">Mushroom</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/olive.svg" alt="olive">
-          <span>Olive</span>
+          <span class="topping__name">Olive</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/onion.svg" alt="onion">
-          <span>Onion</span>
+          <span class="topping__name">Onion</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/pepper.svg" alt="pepper">
-          <span>Pepper</span>
+          <span class="topping__name">Pepper</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/pepperoni.svg" alt="pepperoni">
-          <span>Pepperoni</span>
+          <span class="topping__name">Pepperoni</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/peppers.svg" alt="peppers">
-          <span>Peppers</span>
+          <span class="topping__name">Peppers</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
         <div class="topping">
           <img src="./assets/toppings/sweetcorn.svg" alt="sweetcorn">
-          <span>Sweetcorn</span>
+          <span class="topping__name">Sweetcorn</span>
           <button>-</button>
-          <span>0</span>
+          <span class="topping__amount">0</span>
           <button>+</button>
         </div>
       </div>
@@ -300,15 +335,15 @@
       <h2>Summary</h2>
       <ul>
         <li class="summary-itemsize">
-          <p>Pizza(Small)</p>
-          <p>$9.9</p>
+          <span class="item__name">Pizza(Small)</span>
+          <span class="item__price">$9.9</span>
         </li>
         <li class="summary-item">
-          <span>Anchovy</span>
+          <span class="item__name">Anchovy</span>
           <button>-</button>
-          <p>0</p>
+          <span class="item__amount">0</span>
           <button>+</button>
-          <p>$0.9</p>
+          <span class="item__price">$0.9</span>
         </li>
         <!-- <li class="summary-item">Bacon</li>
         <li class="summary-item">Basil</li>
@@ -323,7 +358,7 @@
         <li class="summary-item">Sweetcorn</li> -->
       </ul>
     </section>
-    <button type="submit">Place order</button>
+    <button type="submit" class="placeorder">Place order</button>
   </section>
 </body>
 

@@ -17,9 +17,13 @@ add size section css & html of index.html
 
 /* todo：p的位置没有顶侧对齐 */
 
-3. 019/07/02
+3. 2019/07/02
 
    add toppings section css & html of index.html
+
+4. 2019/07/03
+
+   1st draft of html completed
 
 
 
