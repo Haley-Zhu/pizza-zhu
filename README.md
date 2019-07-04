@@ -25,5 +25,11 @@ add size section css & html of index.html
 
    1st draft of html completed
 
+5. 2019/07/04
+
+   config environment
+
+   - webpack, babel, react
+
 
 
