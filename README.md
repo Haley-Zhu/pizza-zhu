@@ -31,5 +31,9 @@ pizzacreator program
 
    complete Sizes，Details，SubmitButtom
 
+7. react（stateless）
+
+   complete Toppings
+
 
 
