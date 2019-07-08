@@ -1,7 +1,18 @@
 import React from 'react';
+import Details from '../Details';
+import SubmitButton from '../SubmitButton';
+import Sizes from '../Sizes';
+import './PizzaCreator.css';
 
-const PizzaCreator = () =>(
-    <div>test OK</div>
+const PizzaCreator = () => (
+  <div className="pizza-creator">
+    <Details />
+    <Sizes />
+    <div>Choose your toppings</div>
+    <div>Summary</div>
+    <SubmitButton>Place Order</SubmitButton>
+    <SubmitButton>Reset</SubmitButton>
+  </div>
 );
 
 export default PizzaCreator;

@@ -1,0 +1,46 @@
+.detail {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-row-gap: 0.5rem;
+}
+
+.detail>label {
+  text-transform: uppercase;
+  color: #6E7790;
+  font-size: small;
+}
+
+.detail>.detail__message {
+  font-size: 14px;
+}
+
+.detail>input {
+  border-radius: 2px;
+  border: 1px solid #d7d7e7;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.detail>input:hover,
+.detail>input:focus {
+  border-color: #1a98e1;
+}
+.detail>input:focus {
+  box-shadow: 0 0 0 2px #1a98e133;
+}
+.detail--error>.detail__message {
+  color: #f5222d;
+}
+.detail--error>input,
+.detail--error>input:hover,
+.detail--error>input:focus {
+  border-color: #f5222d;
+}
+.detail--error>input:focus {
+  box-shadow: 0 0 0 2px #f5222d33;
+}

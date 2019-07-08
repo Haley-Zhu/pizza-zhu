@@ -1,35 +1,35 @@
 # pizza-zhu
 pizzacreator program
 
-1. 2019/07/01  
+1. css & html
 
-add assets folder(contains images);
+   add assets folder(contains images);
 
-add index.html
+   add index.html
 
-add details section css & html of index.html
+   add details section css & html of index.html
 
-2. 2019/07/02
+2. css & html
 
-add size section css & html of index.html
+   add size section css & html of index.html
 
-/* todo：border得是个圆形 */
-
-/* todo：p的位置没有顶侧对齐 */
-
-3. 2019/07/02
+3. css & html
 
    add toppings section css & html of index.html
 
-4. 2019/07/03
+4. css & html
 
    1st draft of html completed
 
-5. 2019/07/04
+5. environment
 
    config environment
 
    - webpack, babel, react
+
+6. react（stateless）
+
+   complete Sizes，Details，SubmitButtom
 
 
 

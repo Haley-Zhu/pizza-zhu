@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>zhu Pizza</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .pizza-creator {
+      padding: 20px 40px;
+    }
+
+    section>h2 {
+      color: #6E7790;
+      margin: 2rem 0;
+    }
+
+    .details-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem 2rem;
+    }
+
+    .detail {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-row-gap: 0.5rem;
+    }
+
+    .detail>label {
+      text-transform: uppercase;
+      color: #6E7790;
+      font-size: small;
+    }
+
+    .detail>.detail__message {
+      font-size: 14px;
+    }
+
+    .detail>input {
+      border-radius: 2px;
+      border: 1px solid #d7d7e7;
+      font-size: 1.2rem;
+      color: rgba(0, 0, 0, 0.8);
+      padding: 0.5rem 1rem;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    .detail>input:hover,
+    .detail>input:focus {
+      border-color: #1a98e1;
+    }
+    .detail>input:focus {
+      box-shadow: 0 0 0 2px #1a98e133;
+    }
+    .detail--error>.detail__message {
+      color: #f5222d;
+    }
+    .detail--error>input,
+    .detail--error>input:hover,
+    .detail--error>input:focus {
+      border-color: #f5222d;
+    }
+    .detail--error>input:focus {
+      box-shadow: 0 0 0 2px #f5222d33;
+    }
+
+    .sizes-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2rem;
+      align-items: center;
+    }
+    .size {
+      --standard-width: 100px;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-gap: 1rem;
+      align-items: center;
+    }
+    .size>img {
+      border: 5px solid rgba(197, 197, 197, 0);
+      border-radius: 50%;
+    }
+    .size--small>img {
+      width: calc(var(--standard-width) * 0.8);
+    }
+
+    .size--medium>img {
+      width: var(--standard-width);
+    }
+
+    .size--large>img {
+      width: calc(var(--standard-width) * 1.2);
+    }
+    .size--select>img,
+    .size:hover>img {
+      border: 5px solid rgba(197, 197, 197, 1);
+    }
+    .size:hover {
+      color: #1a98e1;
+    }
+    .size__price {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: small;
+    }
+
+    .toppings-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem 2rem;
+    }
+
+    .topping {
+      border-radius: 2px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      grid-gap: 1rem;
+      background-color: rgb(240, 240, 240);
+    }
+
+    .topping>img {
+      width: 50px;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: rgb(212, 212, 212);
+    }
+
+    .topping>.topping__name {
+      padding: 0.75rem 0;
+    }
+
+    .topping>.topping__amount {
+      display: grid;
+      grid-template-columns: repeat(3, 2rem);
+      height: 100%;
+      align-items: center;
+      grid-gap: 0.5rem;
+    }
+
+    .topping__amount>button {
+      border: 0;
+      height: 100%;
+      outline: 0;
+      cursor: pointer;
+    }
+
+    .topping__amount>button:hover {
+      background-color: #1a98e1;
+      color: white;
+    }
+    .topping--active {
+      background: #1a98e1;
+      color: white!important;
+    }
+    .topping--active > .topping__amount > button {
+      color: white!important;
+    }
+
+    .topping__amount>span {
+      text-align: center;
+    }
+
+    .summary ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .summary ul>li,
+    .summary__total {
+      margin: 1rem 0;
+    }
+
+    .summary__itemsize,
+    .summary__total {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-gap: 0.5rem;
+    }
+
+    .summary__item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-gap: 0.5rem;
+      align-items: center;
+      justify-items: start;
+    }
+
+    .item__amount {
+      display: grid;
+      grid-template-columns: 1.5rem 2rem 1.5rem;
+      align-items: center;
+    }
+
+    .item__amount>button {
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      outline: 0;
+      cursor: pointer;
+    }
+    .item__amount>button:hover {
+      background-color: #1a98e1;
+      color: white;
+    }
+    .item__amount>span {
+      text-align: center;
+    }
+
+    button[type="submit"]:hover {
+      background-color: rgba(42, 177, 42, 0.7);
+    }
+    button[type="submit"],
+    button[type="submit"]:active {
+      background-color: rgb(42, 177, 42);
+      width: 100%;
+      padding: 1rem 0;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+      font-size: 20px;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <section class="pizza-creator">
+    <section class="details">
+      <h2>Enter your details</h2>
+      <div class="details-container">
+        <div class="detail detail--error">
+          <label for="name">name</label>
+          <span class="detail__message">Please input your name</span>
+          <input type="text" id="name">
+        </div>
+        <div class="detail">
+          <label for="email">email</label>
+          <span class="detail__message">Please input your email</span>
+          <input type="text" id="email">
+        </div>
+        <div class="detail">
+          <label for="confirm_email">confirm email</label>
+          <span class="detail__message">Please input your confirm email</span>
+          <input type="text" id="confirm_email">
+        </div>
+        <div class="detail">
+          <label for="address">address</label>
+          <span class="detail__message">Please input your address</span>
+          <input type="text" id="address">
+        </div>
+        <div class="detail">
+          <label for="postcode">postcode</label>
+          <span class="detail__message">Please input your postcode</span>
+          <input type="text" id="postcode">
+        </div>
+        <div class="detail">
+          <label for="contact_number">contact number</label>
+          <span class="detail__message">Please input your contact number</span>
+          <input type="text" id="contact_number">
+        </div>
+      </div>
+    </section>
+    <section class="sizes">
+      <h2>Select your sizes</h2>
+      <div class="sizes-container">
+        <div class="size size--small size--select">
+          <img src="./assets/size.png" alt="small">
+          <div>
+            Small
+            <br />
+            <span class="size__price">$10.99</span>
+          </div>
+        </div>
+        <div class="size size--medium">
+          <img src="./assets/size.png" alt="medium">
+          <div>
+            Medium
+            <br />
+            <span class="size__price">$10.99</span>
+          </div>
+        </div>
+        <div class="size size--large">
+          <img src="./assets/size.png" alt="large">
+          <div>
+            Large
+            <br />
+            <span class="size__price">$10.99</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="toppings">
+      <h2>Choose your toppings</h2>
+      <div class="toppings-container">
+        <div class="topping">
+          <img src="./assets/toppings/anchovy.svg" alt="anchovy">
+          <span class="topping__name">Anchovy</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/bacon.svg" alt="bacon">
+          <span class="topping__name">Bacon</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/basil.svg" alt="basil">
+          <span class="topping__name">Basil</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/chili.svg" alt="chili">
+          <span class="topping__name">Chili</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/mozzarella.svg" alt="mozzarella">
+          <span class="topping__name">Mozzarella</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/mushroom.svg" alt="mushroom">
+          <span class="topping__name">Mushroom</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/olive.svg" alt="olive">
+          <span class="topping__name">Olive</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/onion.svg" alt="onion">
+          <span class="topping__name">Onion</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/pepper.svg" alt="pepper">
+          <span class="topping__name">Pepper</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/pepperoni.svg" alt="pepperoni">
+          <span class="topping__name">Pepperoni</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/peppers.svg" alt="peppers">
+          <span class="topping__name">Peppers</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+        <div class="topping">
+          <img src="./assets/toppings/sweetcorn.svg" alt="sweetcorn">
+          <span class="topping__name">Sweetcorn</span>
+          <div class="topping__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="summary">
+      <h2>Summary</h2>
+      <ul>
+        <li class="summary__itemsize">
+          <span class="item__name">Pizza(Small)</span>
+          <span class="item__price">$9.9</span>
+        </li>
+        <li class="summary__item">
+          <span class="item__name">Anchovy</span>
+          <div class="item__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+          <span class="item__price">$0.9</span>
+        </li>
+        <!-- <li class="summary-item">Bacon</li>
+            <li class="summary-item">Basil</li>
+            <li class="summary-item">Chili</li>
+            <li class="summary-item">Mozzarella</li>
+            <li class="summary-item">Mushroom</li>
+            <li class="summary-item">Olive</li>
+            <li class="summary-item">Onion</li>
+            <li class="summary-item">Pepper</li>
+            <li class="summary-item">Pepperoni</li>
+            <li class="summary-item">Peppers</li>
+            <li class="summary-item">Sweetcorn</li> -->
+      </ul>
+      <hr>
+      <div class="summary__total">
+        <span>Total</span>
+        <span class="item__price">$9.9</span>
+      </div>
+    </section>
+    <button type="submit">Place Order</button>
+  </section>
+</body>
+
+</html>
