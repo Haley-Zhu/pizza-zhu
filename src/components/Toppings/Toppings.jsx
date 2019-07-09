@@ -57,7 +57,7 @@ const Toppings = () => (
         toppingName: 'sweetcorn',
         toppingImg: sweetcornImg
       }].map(({ toppingName, toppingImg }) => (
-        <Topping key={toppingName} toppingName={toppingName} toppingImg={toppingImg} />
+        <Topping toppingName={toppingName} toppingImg={toppingImg} />
       ))}
     </div>
   </section>

@@ -18,7 +18,7 @@ const Sizes = () => (
         sizestyle: 'large', 
         price: 11.9,
       }].map(({sizestyle, price}) => (
-        <Size key={sizestyle} sizestyle={sizestyle} price={price}/>
+        <Size sizestyle={sizestyle} price={price}/>
       ))}
     </div>
   </section>

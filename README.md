@@ -19,7 +19,7 @@ pizzacreator program
 
 4. css & html
 
-   1st draft of html completed
+   1st draft of html completed（2019/7/4）
 
 5. environment
 
@@ -34,6 +34,12 @@ pizzacreator program
 7. react（stateless）
 
    complete Toppings
+
+8. react（stateless）
+
+   complete Summary
+
+   1st stateless react completed （2019/7/9）
 
 
 

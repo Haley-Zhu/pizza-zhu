@@ -23,6 +23,10 @@
   justify-items: start;
 }
 
+.item__name {
+  text-transform: capitalize;
+}
+
 .item__amount {
   display: grid;
   grid-template-columns: 1.5rem 2rem 1.5rem;

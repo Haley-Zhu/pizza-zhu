@@ -5,7 +5,7 @@ const Topping = ({
   toppingName, 
   toppingImg
 }) => (
-  <div className="topping">
+  <div key={toppingName} className="topping">
     <img src={toppingImg} alt={toppingName} />
     <span className="topping__name">{toppingName}</span>
     <div className="topping__amount">

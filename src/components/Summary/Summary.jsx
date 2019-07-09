@@ -1,35 +1,40 @@
 import React from 'react';
+import Title from '../Title';
+import './Summary.css';
 
-const Summary = () => (
+const Summary = ({
+  selectedPizza: {
+    sizestyle,
+    price,
+  },
+  selectToppings,
+  total
+}) => (
   <section className="summary">
     <Title>Summary</Title>
     <ul>
+      <li className="summary__itemsize">
+        <span className="item__name">Pizza({sizestyle})</span>
+        <span className="item__price">${price}</span>
+      </li>
+      {selectToppings.map(({ toppingName, toppingPrice }) => (
+        <li className="summary__item" key={toppingName}>
+          <span className="item__name">{toppingName}</span>
+          <div className="item__amount">
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+          <span className="item__price">${toppingPrice}</span>
+        </li>
+      ))}
     </ul>
     <hr/>
     <div className="summary__total">
       <span>Total</span>
-      <span className="item__price">$9.9</span>
+      <span className="item__price">${total}</span>
     </div>
   </section>
 )
 
 export default Summary;
-
-{/* <section class="summary">
-      <h2>Summary</h2>
-      <ul>
-        <li class="summary__itemsize">
-          <span class="item__name">Pizza(Small)</span>
-          <span class="item__price">$9.9</span>
-        </li>
-        <li class="summary__item">
-          <span class="item__name">Anchovy</span>
-          <div class="item__amount">
-            <button>-</button>
-            <span>0</span>
-            <button>+</button>
-          </div>
-          <span class="item__price">$0.9</span>
-        </li>
-      </ul>
-    </section> */}
