@@ -8,8 +8,20 @@ const Details = () => (
   <section className="details">
     <Title>Enter your details</Title>
     <div className="details-container">
-      {['name', 'email', 'confirm_email', 'address', 'postcode', 'contact_number'].map(v => (
-        <Input keyName={v} />
+      {[{
+        detailName: 'name',
+      }, {
+        detailName: 'email',
+      }, {
+        detailName: 'confirm_email',
+      }, {
+        detailName: 'address',
+      }, {
+        detailName: 'postcode',
+      }, {
+        detailName: 'contact_number',
+      }].map(({ detailName }) => (
+        <Input keyName={detailName} />
       ))}
     </div>
   </section>
