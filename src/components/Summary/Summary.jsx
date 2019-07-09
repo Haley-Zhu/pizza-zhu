@@ -1,5 +1,6 @@
 import React from 'react';
 import Title from '../Title';
+import SummaryToppingItem from '../SummaryToppingItem';
 import './Summary.css';
 
 const Summary = ({
@@ -18,15 +19,7 @@ const Summary = ({
         <span className="item__price">${price}</span>
       </li>
       {selectToppings.map(({ toppingName, toppingPrice }) => (
-        <li className="summary__item" key={toppingName}>
-          <span className="item__name">{toppingName}</span>
-          <div className="item__amount">
-            <button>-</button>
-            <span>0</span>
-            <button>+</button>
-          </div>
-          <span className="item__price">${toppingPrice}</span>
-        </li>
+        <SummaryToppingItem toppingName={toppingName} toppingPrice={toppingPrice} />
       ))}
     </ul>
     <hr/>

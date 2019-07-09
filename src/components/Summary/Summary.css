@@ -14,36 +14,3 @@
   grid-template-columns: 1fr auto;
   grid-gap: 0.5rem;
 }
-
-.summary__item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-gap: 0.5rem;
-  align-items: center;
-  justify-items: start;
-}
-
-.item__name {
-  text-transform: capitalize;
-}
-
-.item__amount {
-  display: grid;
-  grid-template-columns: 1.5rem 2rem 1.5rem;
-  align-items: center;
-}
-
-.item__amount>button {
-  height: 100%;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  outline: 0;
-  cursor: pointer;
-}
-.item__amount>button:hover {
-  background-color: #1a98e1;
-  color: white;
-}
-.item__amount>span {
-  text-align: center;
-}
