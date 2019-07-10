@@ -19,7 +19,7 @@ const Summary = ({
         <span className="item__price">${price}</span>
       </li>
       {selectToppings.map(({ toppingName, toppingPrice }) => (
-        <SummaryToppingItem toppingName={toppingName} toppingPrice={toppingPrice} />
+        <SummaryToppingItem key={toppingName} toppingName={toppingName} toppingPrice={toppingPrice} />
       ))}
     </ul>
     <hr/>

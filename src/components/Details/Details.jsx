@@ -21,7 +21,7 @@ const Details = () => (
       }, {
         detailName: 'contact_number',
       }].map(({ detailName }) => (
-        <Input keyName={detailName} />
+        <Input key={detailName} keyName={detailName} />
       ))}
     </div>
   </section>

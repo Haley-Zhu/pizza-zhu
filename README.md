@@ -40,6 +40,8 @@ pizzacreator program
    complete Summary
 
    1st stateless react completed （2019/7/9）
+   
+9. topping amount plus and minus
 
 
 

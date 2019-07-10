@@ -14,3 +14,7 @@
   grid-template-columns: 1fr auto;
   grid-gap: 0.5rem;
 }
+
+/* .item__name {
+  text-transform: uppercase;
+} */

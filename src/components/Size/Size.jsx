@@ -6,7 +6,7 @@ const Size = ({
   sizestyle, 
   price
 }) => (
-  <div key={sizestyle} className={`size size--${sizestyle}`}>
+  <div className={`size size--${sizestyle}`}>
     <img src={sizeimg} alt={sizestyle} />
     <div className="size__name">{sizestyle}
       <br />

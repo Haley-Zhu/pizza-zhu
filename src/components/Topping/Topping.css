@@ -44,6 +44,7 @@
   color: white!important;
 }
 .topping--active > .topping__amount > button {
+  background: #167fbb;
   color: white!important;
 }
 

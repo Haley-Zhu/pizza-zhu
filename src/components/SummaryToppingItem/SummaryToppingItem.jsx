@@ -5,7 +5,7 @@ const SummaryToppingItem = (({
   toppingName, 
   toppingPrice 
 }) => (
-  <li className="summary__item" key={toppingName}>
+  <li className="summary__item">
     <span className="item__name">{toppingName}</span>
     <div className="item__amount">
       <button>-</button>
