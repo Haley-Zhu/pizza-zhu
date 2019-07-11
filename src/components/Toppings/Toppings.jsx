@@ -16,51 +16,65 @@ import sweetcornImg from '../../../assets/toppings/sweetcorn.svg';
 import './Toppings.css';
 
 
-const Toppings = () => (
-  <section className="toppings">
-    <Title>Choose your toppings</Title>
-    <div className="toppings-container">
-      {[{
-        toppingName: 'anchovy',
-        toppingImg: anchovyImg
-      }, {
-        toppingName: 'bacon',
-        toppingImg: baconImg
-      }, {
-        toppingName: 'basil',
-        toppingImg: basilImg
-      }, {
-        toppingName: 'chili',
-        toppingImg: chiliImg
-      }, {
-        toppingName: 'mozzarella',
-        toppingImg: mozzarellaImg
-      }, {
-        toppingName: 'mushroom',
-        toppingImg: mushroomImg
-      }, {
-        toppingName: 'olive',
-        toppingImg: oliveImg
-      }, {
-        toppingName: 'onion',
-        toppingImg: onionImg
-      }, {
-        toppingName: 'pepper',
-        toppingImg: pepperImg
-      }, {
-        toppingName: 'pepperoni',
-        toppingImg: pepperoniImg
-      }, {
-        toppingName: 'peppers',
-        toppingImg: peppersImg
-      }, {
-        toppingName: 'sweetcorn',
-        toppingImg: sweetcornImg
-      }].map(({ toppingName, toppingImg }) => (
-        <Topping key={toppingName} toppingName={toppingName} toppingImg={toppingImg} />
-      ))}
-    </div>
-  </section>
+const Toppings = ({
+  selectedToppings,
+  onMinusToppingAmount,
+  onPlusToppingAmount,
+}) => (
+    <section className="toppings">
+      <Title>Choose your toppings</Title>
+      <div className="toppings-container">
+        {[{
+          toppingName: 'anchovy',
+          toppingImg: anchovyImg
+        }, {
+          toppingName: 'bacon',
+          toppingImg: baconImg
+        }, {
+          toppingName: 'basil',
+          toppingImg: basilImg
+        }, {
+          toppingName: 'chili',
+          toppingImg: chiliImg
+        }, {
+          toppingName: 'mozzarella',
+          toppingImg: mozzarellaImg
+        }, {
+          toppingName: 'mushroom',
+          toppingImg: mushroomImg
+        }, {
+          toppingName: 'olive',
+          toppingImg: oliveImg
+        }, {
+          toppingName: 'onion',
+          toppingImg: onionImg
+        }, {
+          toppingName: 'pepper',
+          toppingImg: pepperImg
+        }, {
+          toppingName: 'pepperoni',
+          toppingImg: pepperoniImg
+        }, {
+          toppingName: 'peppers',
+          toppingImg: peppersImg
+        }, {
+          toppingName: 'sweetcorn',
+          toppingImg: sweetcornImg
+        }].map(({ toppingName, toppingImg }) => {
+          const selectedTopping = selectedToppings.find(selectedTopping => (
+            selectedTopping.toppingName === toppingName));
+            
+          return (<Topping
+            key={toppingName}
+            toppingName={toppingName}
+            toppingImg={toppingImg}
+            selectedTopping={selectedTopping}
+            onMinusToppingAmount={onMinusToppingAmount}
+            onPlusToppingAmount={onPlusToppingAmount}
+          />);
+        })}
+      </div>
+    </section>
 )
 
 export default Toppings;

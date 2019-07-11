@@ -4,14 +4,11 @@ import './Topping.css';
 class Topping extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      amount: 0,
-    }
   }
 
   getToppingClassName() {
-    const { active } = this.state;
+    const amount = this.getAmount();
+    const active = amount > 0;
 
     if (active) {
       return 'topping topping--active';
@@ -20,49 +17,30 @@ class Topping extends React.Component {
     return 'topping';
   }
 
-  getActiveState() {
-
-  }
-  
-  toggleActive() {
-
-    this.setState({
-      active: !active,
-    })
-  }
-
-  onToppingAmountMinus() {
-    if(this.state.amount >= 1) {
-      this.setState({
-        amount: this.state.amount-1,
-      })
-    }
-    // if amount = 0, do inactive
-  }
-
-  onToppingAmountPlus() {
-    this.setState({
-      amount: this.state.amount+1,
-    })
-    // if inactive, do active
-    // else, do nothing
-  }
-
   getAmount() {
-    return this.state.amount;
+    const amount = 0; 
+
+    if (this.props.selectedTopping) {
+      const { selectedTopping } = this.props;
+
+      return selectedTopping.toppingAmount;
+      // amount = selectedTopping.toppingAmount;
+    }
+
+    return amount;
   }
 
   render() {
-    const { toppingName, toppingImg } = this.props;
+    const { toppingName, toppingImg, onMinusToppingAmount, onPlusToppingAmount } = this.props;
 
     return (
       <div className={this.getToppingClassName()}>
         <img src={toppingImg} alt={toppingName} />
         <span className="topping__name">{toppingName}</span>
         <div className="topping__amount">
-          <button onClick={() => this.onToppingAmountMinus()}>-</button>
+          <button onClick={() => onMinusToppingAmount(toppingName)}>-</button>
           <span>{this.getAmount()}</span>
-          <button onClick={() => this.onToppingAmountPlus()}>+</button>
+          <button onClick={() => onPlusToppingAmount(toppingName)}>+</button>
         </div>
       </div>
     );
