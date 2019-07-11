@@ -43,7 +43,7 @@ pizzacreator program
    
 9. topping amount plus and minus
 
-10. rise topping state to PizzaCreator
+10. rise topping state to PizzaCreator（2019/7/12）
 
 
 

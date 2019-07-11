@@ -47,23 +47,22 @@ class PizzaCreator extends React.Component {
     if (selectedTopping) {
       const { toppingAmount } = selectedTopping;
       const newToppingAmount = toppingAmount + value;
+      let newSelectedToppings = selectedToppings;
 
       if (newToppingAmount > 0) {
-        const newSelectedToppings = selectedToppings.map(selectedToppingItem => {
-          if (selectedToppingItem.toppingName === selectedToppingName) {
-            selectedToppingItem.toppingAmount = newToppingAmount;
+        newSelectedToppings = selectedToppings.map(selectedTopping => {
+          if (selectedTopping.toppingName === selectedToppingName) {
+            selectedTopping.toppingAmount = newToppingAmount;
           }
-  
-          return selectedToppingItem;
+
+          return selectedTopping;
         });
-
-        this.setSelectedToppings(newSelectedToppings);
-        return;
       }
-
-      const newSelectedToppings = selectedToppings.filter(selectedToppings => (
-        selectedToppings.toppingName !== selectedToppingName
-      ));
+      else {
+        newSelectedToppings = selectedToppings.filter(selectedTopping => (
+          selectedTopping.toppingName !== selectedToppingName
+        ));
+      }
 
       this.setSelectedToppings(newSelectedToppings);
       return;
