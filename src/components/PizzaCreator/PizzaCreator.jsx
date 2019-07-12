@@ -4,6 +4,7 @@ import SubmitButton from '../SubmitButton';
 import Sizes from '../Sizes';
 import Toppings from '../Toppings';
 import Summary from '../Summary';
+import getToppingByName from '../../helper/getToppingByName';
 import './PizzaCreator.css';
 
 class PizzaCreator extends React.Component {
@@ -71,10 +72,14 @@ class PizzaCreator extends React.Component {
     const { selectedToppings } = this.state;
     const selectedToppingAmount = value;
 
+    const topping = getToppingByName(selectedToppingName);
+    const { toppingPrice } = topping;
+
     const newSelectedToppings = [
       ...selectedToppings, {
         toppingName: selectedToppingName,
         toppingAmount: selectedToppingAmount,
+        toppingPrice: toppingPrice,
       }];
 
     this.setSelectedToppings(newSelectedToppings);
@@ -107,7 +112,10 @@ class PizzaCreator extends React.Component {
         />
         <Summary 
         selectedPizza={{ sizestyle: 'small', price: 9.9 }}
-        selectToppings={[{ toppingName: 'anchovy', toppingPrice: 0.9 }]} />
+        selectedToppings={selectedToppings} 
+        onMinusToppingAmount={this.onMinusToppingAmount}
+        onPlusToppingAmount={this.onPlusToppingAmount}
+        />
         <SubmitButton>Place Order</SubmitButton>
         <SubmitButton>Reset</SubmitButton>
       </div>

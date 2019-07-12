@@ -47,5 +47,7 @@ pizzacreator program
 
 11. split toppings update function to add and remove
 
+12. summary item
+
 
 

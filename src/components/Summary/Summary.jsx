@@ -8,7 +8,9 @@ const Summary = ({
     sizestyle,
     price,
   },
-  selectToppings,
+  selectedToppings,
+  onMinusToppingAmount,
+  onPlusToppingAmount,
   total
 }) => (
   <section className="summary">
@@ -18,8 +20,13 @@ const Summary = ({
         <span className="item__name">Pizza({sizestyle})</span>
         <span className="item__price">${price}</span>
       </li>
-      {selectToppings.map(({ toppingName, toppingPrice }) => (
-        <SummaryToppingItem key={toppingName} toppingName={toppingName} toppingPrice={toppingPrice} />
+      {selectedToppings.map(selectedTopping => (
+        <SummaryToppingItem 
+        key={selectedTopping.toppingName} 
+        selectedTopping={selectedTopping}
+        onMinusToppingAmount={onMinusToppingAmount}
+        onPlusToppingAmount={onPlusToppingAmount}
+        />
       ))}
     </ul>
     <hr/>
