@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../Title';
 import Topping from '../Topping';
-import toppingsSet from '../../data/toppingsSet';
+import ToppingsSet from '../../data/ToppingsSet';
 import './Toppings.css';
 
 
@@ -13,7 +13,7 @@ const Toppings = ({
     <section className="toppings">
       <Title>Choose your toppings</Title>
       <div className="toppings-container">
-        {toppingsSet.map(({ toppingName, toppingImg }) => {
+        {ToppingsSet.map(({ toppingName, toppingImg }) => {
           const selectedTopping = selectedToppings.find(selectedTopping => (
             selectedTopping.toppingName === toppingName));
             

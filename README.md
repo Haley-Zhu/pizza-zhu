@@ -49,5 +49,7 @@ pizzacreator program
 
 12. summary item
 
+13. select size，summary size，summary total
+
 
 

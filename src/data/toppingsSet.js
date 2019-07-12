@@ -11,7 +11,7 @@ import pepperoniImg from '../../assets/toppings/pepperoni.svg';
 import peppersImg from '../../assets/toppings/peppers.svg';
 import sweetcornImg from '../../assets/toppings/sweetcorn.svg';
 
-const toppingsSet = [{
+const ToppingsSet = [{
   toppingName: 'anchovy',
   toppingImg: anchovyImg,
   toppingPrice: 0.9,
@@ -62,5 +62,5 @@ const toppingsSet = [{
   toppingPrice: 0.9,
 }];
 
-export default toppingsSet;
+export default ToppingsSet;
 

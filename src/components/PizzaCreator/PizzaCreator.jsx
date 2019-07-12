@@ -5,6 +5,8 @@ import Sizes from '../Sizes';
 import Toppings from '../Toppings';
 import Summary from '../Summary';
 import getToppingByName from '../../helper/getToppingByName';
+import InitialSize from '../../data/InitialSize';
+import getSizeBySizeStyle from '../../helper/getSizeBySizeStyle';
 import './PizzaCreator.css';
 
 class PizzaCreator extends React.Component {
@@ -13,15 +15,26 @@ class PizzaCreator extends React.Component {
 
     this.state = {
       selectedToppings: [],
+      selectedSize: {
+        sizeStyle: InitialSize.sizeStyle,
+        price: InitialSize.price,
+      },
     }
 
     this.onMinusToppingAmount = this.onMinusToppingAmount.bind(this);
     this.onPlusToppingAmount = this.onPlusToppingAmount.bind(this);
+    this.onSelectPizzaSize = this.onSelectPizzaSize.bind(this);
   }
 
   setSelectedToppings(selectedToppings) {
     this.setState({
       selectedToppings,
+    })
+  }
+
+  setSelectedSize(selectedSize) {
+    this.setState({
+      selectedSize,
     })
   }
 
@@ -99,19 +112,40 @@ class PizzaCreator extends React.Component {
     this.setSelectedToppings(newSelectedToppings);
   }
 
+  onSelectPizzaSize(newSizeStyle) {
+    const { selectedSize } = this.state;
+    const { sizeStyle } = selectedSize;
+
+    if (newSizeStyle === sizeStyle) {
+      return;
+    }
+
+    const { price } = getSizeBySizeStyle(newSizeStyle);
+    const newSelectedSize = {
+      sizeStyle: newSizeStyle,
+      price
+    }
+
+    this.setSelectedSize(newSelectedSize);
+  }
+
   render() {
-    const { selectedToppings } = this.state;
+    const { selectedToppings, selectedSize } = this.state;
+
     return (
       <div className="pizza-creator">
         <Details />
-        <Sizes />
+        <Sizes 
+        selectedSize={selectedSize}
+        onSelectPizzaSize={this.onSelectPizzaSize} 
+        />
         <Toppings 
         selectedToppings={selectedToppings} 
         onMinusToppingAmount={this.onMinusToppingAmount}
         onPlusToppingAmount={this.onPlusToppingAmount}
         />
         <Summary 
-        selectedPizza={{ sizestyle: 'small', price: 9.9 }}
+        selectedSize={selectedSize}
         selectedToppings={selectedToppings} 
         onMinusToppingAmount={this.onMinusToppingAmount}
         onPlusToppingAmount={this.onPlusToppingAmount}

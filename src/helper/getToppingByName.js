@@ -1,7 +1,7 @@
-import toppingSet from '../data/toppingsSet';
+import ToppingsSet from '../data/ToppingsSet';
 
-const topping = ( name ) => (
-  toppingSet.find(topping => (topping.toppingName === name))
+const topping = ( name, toppings = ToppingsSet ) => (
+  toppings.find(topping => (topping.toppingName === name))
 );
 
 export default topping;

@@ -21,10 +21,15 @@
 .size--large>img {
   width: calc(var(--standard-width) * 1.2);
 }
-.size--select>img,
+
 .size:hover>img {
   border: 5px solid rgba(197, 197, 197, 1);
 }
+.size--select>img {
+  border: 5px solid #44a9e4!important;
+}
+
+.size--select,
 .size:hover {
   color: #1a98e1;
 }

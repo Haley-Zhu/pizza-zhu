@@ -1,4 +1,5 @@
 import React from 'react';
+import accMul from '../../helper/Math/accMul';
 import './SummaryToppingItem.css';
 
 class SummaryToppingItem extends React.Component {
@@ -9,6 +10,7 @@ class SummaryToppingItem extends React.Component {
   render() {
     const { selectedTopping, onMinusToppingAmount, onPlusToppingAmount } = this.props;
     const { toppingName, toppingAmount, toppingPrice } = selectedTopping;
+    const price = accMul(toppingPrice, toppingAmount);
 
     return (
       <li className="summary__item">
@@ -18,7 +20,7 @@ class SummaryToppingItem extends React.Component {
           <span>{toppingAmount}</span>
           <button onClick={() => onPlusToppingAmount(toppingName)}>+</button>
         </div>
-        <span className="item__price">${toppingPrice * toppingAmount}</span>
+        <span className="item__price">${price}</span>
       </li>
     );
   }
