@@ -45,5 +45,7 @@ pizzacreator program
 
 10. rise topping state to PizzaCreator（2019/7/12）
 
+11. split toppings update function to add and remove
+
 
 

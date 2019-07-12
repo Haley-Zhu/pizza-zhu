@@ -26,40 +26,53 @@ const Toppings = ({
       <div className="toppings-container">
         {[{
           toppingName: 'anchovy',
-          toppingImg: anchovyImg
+          toppingImg: anchovyImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'bacon',
-          toppingImg: baconImg
+          toppingImg: baconImg,
+          toppingPrice: 0.9,
+          
         }, {
           toppingName: 'basil',
-          toppingImg: basilImg
+          toppingImg: basilImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'chili',
-          toppingImg: chiliImg
+          toppingImg: chiliImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'mozzarella',
-          toppingImg: mozzarellaImg
+          toppingImg: mozzarellaImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'mushroom',
-          toppingImg: mushroomImg
+          toppingImg: mushroomImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'olive',
-          toppingImg: oliveImg
+          toppingImg: oliveImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'onion',
-          toppingImg: onionImg
+          toppingImg: onionImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'pepper',
-          toppingImg: pepperImg
+          toppingImg: pepperImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'pepperoni',
-          toppingImg: pepperoniImg
+          toppingImg: pepperoniImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'peppers',
-          toppingImg: peppersImg
+          toppingImg: peppersImg,
+          toppingPrice: 0.9,
         }, {
           toppingName: 'sweetcorn',
-          toppingImg: sweetcornImg
+          toppingImg: sweetcornImg,
+          toppingPrice: 0.9,
         }].map(({ toppingName, toppingImg }) => {
           const selectedTopping = selectedToppings.find(selectedTopping => (
             selectedTopping.toppingName === toppingName));

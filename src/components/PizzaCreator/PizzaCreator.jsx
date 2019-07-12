@@ -29,45 +29,46 @@ class PizzaCreator extends React.Component {
 
     const selectedTopping = selectedToppings.find((selectedTopping) => (
       selectedTopping.toppingName === selectedToppingName));
+
       if (selectedTopping) {
-        this.updateSelectedToppings(selectedToppingName, value);
+        const { toppingAmount } = selectedTopping;
+        const newToppingAmount = toppingAmount + value;
+
+        if (newToppingAmount > 0) {
+          this.updateSelectedToppings(selectedToppingName, value);
+          return;
+        }
+
+        this.removeFromSelectedToppings(selectedToppingName);
       }
   }
 
   onPlusToppingAmount(selectedToppingName, value = 1) {
-    this.updateSelectedToppings(selectedToppingName, value);
-  }
-
-  updateSelectedToppings(selectedToppingName, value) {
     const { selectedToppings } = this.state;
 
     const selectedTopping = selectedToppings.find((selectedTopping) => (
       selectedTopping.toppingName === selectedToppingName));
 
-    if (selectedTopping) {
-      const { toppingAmount } = selectedTopping;
-      const newToppingAmount = toppingAmount + value;
-      let newSelectedToppings = selectedToppings;
-
-      if (newToppingAmount > 0) {
-        newSelectedToppings = selectedToppings.map(selectedTopping => {
-          if (selectedTopping.toppingName === selectedToppingName) {
-            selectedTopping.toppingAmount = newToppingAmount;
-          }
-
-          return selectedTopping;
-        });
-      }
-      else {
-        newSelectedToppings = selectedToppings.filter(selectedTopping => (
-          selectedTopping.toppingName !== selectedToppingName
-        ));
+      if (selectedTopping) {
+        this.updateSelectedToppings(selectedToppingName, value);
+        return;
       }
 
-      this.setSelectedToppings(newSelectedToppings);
-      return;
-    }
+      this.addToSelectedToppings(selectedToppingName, value);
+  }
 
+  removeFromSelectedToppings(selectedToppingName) {
+    const { selectedToppings } = this.state;
+
+    const newSelectedToppings = selectedToppings.filter(selectedTopping => (
+      selectedTopping.toppingName !== selectedToppingName
+    ));
+
+    this.setSelectedToppings(newSelectedToppings);
+  }
+
+  addToSelectedToppings(selectedToppingName, value) {
+    const { selectedToppings } = this.state;
     const selectedToppingAmount = value;
 
     const newSelectedToppings = [
@@ -77,7 +78,20 @@ class PizzaCreator extends React.Component {
       }];
 
     this.setSelectedToppings(newSelectedToppings);
-    return;
+  }
+
+  updateSelectedToppings(selectedToppingName, value) {
+    const { selectedToppings } = this.state;
+
+    const newSelectedToppings = selectedToppings.map(selectedTopping => {
+      if (selectedTopping.toppingName === selectedToppingName) {
+        selectedTopping.toppingAmount = selectedTopping.toppingAmount + value;
+      }
+
+      return selectedTopping;
+    });
+
+    this.setSelectedToppings(newSelectedToppings);
   }
 
   render() {
@@ -91,8 +105,9 @@ class PizzaCreator extends React.Component {
         onMinusToppingAmount={this.onMinusToppingAmount}
         onPlusToppingAmount={this.onPlusToppingAmount}
         />
-        <Summary selectedPizza={{ sizestyle: 'small', price: 9.9 }}
-          selectToppings={[{ toppingName: 'anchovy', toppingPrice: 0.9 }]} />
+        <Summary 
+        selectedPizza={{ sizestyle: 'small', price: 9.9 }}
+        selectToppings={[{ toppingName: 'anchovy', toppingPrice: 0.9 }]} />
         <SubmitButton>Place Order</SubmitButton>
         <SubmitButton>Reset</SubmitButton>
       </div>
