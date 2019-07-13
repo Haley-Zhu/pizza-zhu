@@ -51,5 +51,9 @@ pizzacreator program
 
 13. select size，summary size，summary total
 
+14. input details,  reset button
+
+15. input details,  reset button patch（2019/7/14）
+
 
 

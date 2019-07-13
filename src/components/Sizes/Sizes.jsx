@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../Title';
 import Size from '../Size';
-import SizesSet from '../../data/SizesSet';
+import SizesSet from '../../data/sizesSet';
 import './Sizes.css';
 
 

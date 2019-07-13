@@ -37,9 +37,9 @@ class Topping extends React.Component {
         <img src={toppingImg} alt={toppingName} />
         <span className="topping__name">{toppingName}</span>
         <div className="topping__amount">
-          <button onClick={() => onMinusToppingAmount(toppingName)}>-</button>
+          <button type="button" onClick={() => onMinusToppingAmount(toppingName)}>-</button>
           <span>{this.getAmount()}</span>
-          <button onClick={() => onPlusToppingAmount(toppingName)}>+</button>
+          <button type="button" onClick={() => onPlusToppingAmount(toppingName)}>+</button>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../Title';
 import Topping from '../Topping';
-import ToppingsSet from '../../data/ToppingsSet';
+import ToppingsSet from '../../data/toppingsSet';
 import './Toppings.css';
 
 

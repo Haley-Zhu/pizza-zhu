@@ -10,7 +10,7 @@
 .topping>img {
   width: 50px;
   height: 100%;
-  padding: 10px;
+  padding: 5px;
   box-sizing: border-box;
   background-color: rgb(212, 212, 212);
 }
@@ -33,6 +33,7 @@
   height: 100%;
   outline: 0;
   cursor: pointer;
+  background-color: rgb(212, 212, 212);
 }
 
 .topping__amount>button:hover {

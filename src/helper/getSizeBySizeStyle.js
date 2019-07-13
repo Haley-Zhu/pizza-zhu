@@ -1,4 +1,4 @@
-import SizesSet from '../data/SizesSet';
+import SizesSet from '../data/sizesSet';
 
 const size = (sizeStyle) => (
   SizesSet.find(size => (size.sizeStyle === sizeStyle))

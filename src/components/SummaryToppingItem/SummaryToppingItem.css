@@ -22,6 +22,7 @@
   border: 1px solid transparent;
   outline: 0;
   cursor: pointer;
+  background-color: rgb(212, 212, 212);
 }
 .item__amount>button:hover {
   background-color: #1a98e1;

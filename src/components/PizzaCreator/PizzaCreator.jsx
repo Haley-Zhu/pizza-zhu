@@ -1,29 +1,30 @@
 import React from 'react';
 import Details from '../Details';
-import SubmitButton from '../SubmitButton';
+import Buttons from '../Buttons';
 import Sizes from '../Sizes';
 import Toppings from '../Toppings';
 import Summary from '../Summary';
 import getToppingByName from '../../helper/getToppingByName';
-import InitialSize from '../../data/InitialSize';
 import getSizeBySizeStyle from '../../helper/getSizeBySizeStyle';
+import initialPizzaCreatorState from '../../data/initialStates/InitialPizzaCreatorState';
 import './PizzaCreator.css';
 
 class PizzaCreator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      selectedToppings: [],
-      selectedSize: {
-        sizeStyle: InitialSize.sizeStyle,
-        price: InitialSize.price,
-      },
-    }
+    this.state = initialPizzaCreatorState;
 
     this.onMinusToppingAmount = this.onMinusToppingAmount.bind(this);
     this.onPlusToppingAmount = this.onPlusToppingAmount.bind(this);
     this.onSelectPizzaSize = this.onSelectPizzaSize.bind(this);
+    this.setSubmitClicked = this.setSubmitClicked.bind(this);
+    this.getSubmitClicked = this.getSubmitClicked.bind(this);
+    this.setInitialStates = this.setInitialStates.bind(this);
+  }
+
+  setInitialStates() {
+    this.setState(initialPizzaCreatorState);
   }
 
   setSelectedToppings(selectedToppings) {
@@ -36,6 +37,16 @@ class PizzaCreator extends React.Component {
     this.setState({
       selectedSize,
     })
+  }
+
+  setSubmitClicked(onSubmitClicked) {
+    this.setState({
+      onSubmitClicked,
+    })
+  }
+
+  getSubmitClicked() {
+    return this.state.onSubmitClicked;
   }
 
   onMinusToppingAmount(selectedToppingName, value = -1) {
@@ -133,26 +144,30 @@ class PizzaCreator extends React.Component {
     const { selectedToppings, selectedSize } = this.state;
 
     return (
-      <div className="pizza-creator">
-        <Details />
-        <Sizes 
-        selectedSize={selectedSize}
-        onSelectPizzaSize={this.onSelectPizzaSize} 
-        />
-        <Toppings 
-        selectedToppings={selectedToppings} 
-        onMinusToppingAmount={this.onMinusToppingAmount}
-        onPlusToppingAmount={this.onPlusToppingAmount}
-        />
-        <Summary 
-        selectedSize={selectedSize}
-        selectedToppings={selectedToppings} 
-        onMinusToppingAmount={this.onMinusToppingAmount}
-        onPlusToppingAmount={this.onPlusToppingAmount}
-        />
-        <SubmitButton>Place Order</SubmitButton>
-        <SubmitButton>Reset</SubmitButton>
-      </div>
+      // <form>
+        <div className="pizza-creator">
+          <Details getSubmitClicked={this.getSubmitClicked} />
+          <Sizes
+            selectedSize={selectedSize}
+            onSelectPizzaSize={this.onSelectPizzaSize}
+          />
+          <Toppings
+            selectedToppings={selectedToppings}
+            onMinusToppingAmount={this.onMinusToppingAmount}
+            onPlusToppingAmount={this.onPlusToppingAmount}
+          />
+          <Summary
+            selectedSize={selectedSize}
+            selectedToppings={selectedToppings}
+            onMinusToppingAmount={this.onMinusToppingAmount}
+            onPlusToppingAmount={this.onPlusToppingAmount}
+          />
+          <Buttons
+            setSubmitClicked={this.setSubmitClicked}
+            setInitialStates={this.setInitialStates}
+          />
+        </div>
+      // </form>
     );
   }
 }

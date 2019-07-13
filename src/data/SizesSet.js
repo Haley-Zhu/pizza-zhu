@@ -1,6 +1,6 @@
 import sizeimg from '../../assets/size.png';
 
-const SizesSet = [{
+const sizesSet = [{
   sizeStyle: 'small', 
   srcImg: sizeimg,
   price: 9.9,
@@ -14,4 +14,4 @@ const SizesSet = [{
   price: 11.9,
 }];
 
-export default SizesSet;
+export default sizesSet;

@@ -1,0 +1,21 @@
+button[type="reset"] {
+  margin: 1rem 0;
+}
+button[type="reset"]:hover {
+  background-color: rgba(226, 61, 39, 0.7);
+}
+button[type="reset"],
+button[type="reset"]:active {
+  background-color: rgb(226, 61, 39);
+  width: 100%;
+  padding: 1rem 0;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  outline: none;
+}
+button[type="reset"]:active {
+  box-shadow: 0 0 0 2px rgba(226, 61, 39, 0.7);
+}

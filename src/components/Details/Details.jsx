@@ -1,27 +1,20 @@
 import React from 'react';
 import Title from '../Title';
-import './Details.css';
 import Input from '../Input';
+import DetailsSet from '../../data/detailsSet';
+import './Details.css';
 
 
-const Details = () => (
+const Details = ({ getSubmitClicked }) => (
   <section className="details">
     <Title>Enter your details</Title>
     <div className="details-container">
-      {[{
-        detailName: 'name',
-      }, {
-        detailName: 'email',
-      }, {
-        detailName: 'confirm_email',
-      }, {
-        detailName: 'address',
-      }, {
-        detailName: 'postcode',
-      }, {
-        detailName: 'contact_number',
-      }].map(({ detailName }) => (
-        <Input key={detailName} keyName={detailName} />
+      {DetailsSet.map(detail => (
+        <Input 
+        key={detail.detailName} 
+        detail={detail}
+        getSubmitClicked={getSubmitClicked}
+        />
       ))}
     </div>
   </section>
