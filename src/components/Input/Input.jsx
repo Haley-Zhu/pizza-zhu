@@ -1,35 +1,17 @@
 import React from 'react'
-import initialInputState from '../../data/initialStates/InitialInputState';
 import './Input.css';
 
 class Input extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = initialInputState;
-  }
-
-  setInitialStates() {
-    this.setState(initialInputState);
-  }
-
-  setInputValue (value) {
-    this.setState({
-      value,
-    })
-  }
-
-  setIsFocus (isFocused = true) {
-    this.setState({
-      isFocused,
-    })
   }
 
   getIsError() {
-    const { isFocused, value } = this.state;
+    const { detailInput, detail } = this.props;
+    const { detailId } = detail;
+    const { isFocused } = detailInput;
+    const value = detailInput[detailId];
     const isSubmit = this.props.getSubmitClicked();
-
-    // debugger;
 
     if ((isFocused || isSubmit) && !value) {
       return true;
@@ -57,9 +39,9 @@ class Input extends React.Component {
 
 
   render() {
-    const { detail } = this.props;
+    const { detail, detailInput, setInputValue, setIsFocus } = this.props;
     const { detailName, detailId, type, placeholder} = detail;
-    const { value } = this.state;
+    const value = detailInput[detailId];
 
     return (
       <div className={this.getDetailClassName()}>
@@ -74,8 +56,8 @@ class Input extends React.Component {
           name={detailId}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => this.setInputValue(e.target.value)}
-          onFocus={() => this.setIsFocus()}
+          onChange={(e) => setInputValue(detailId, e.target.value)}
+          onFocus={() => setIsFocus(detailId)}
           />
       </div>
     );

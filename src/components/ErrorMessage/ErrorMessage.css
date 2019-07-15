@@ -1,0 +1,24 @@
+.errorMeassage {
+  position: fixed;
+  left: calc(50% - 10rem);
+  top: 5rem;
+  padding: 0 1rem;
+  width: 20rem;
+  height: 8rem;
+  box-sizing: border-box;
+  background-color: #dbdbdb;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.5rem 1rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.errorMeassage > img {
+  width: 2rem;
+}
+
+.errorMeassage > button {
+  grid-column: 1 /span 2;
+  width: 6rem;
+}

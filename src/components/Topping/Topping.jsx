@@ -33,7 +33,8 @@ class Topping extends React.Component {
     const { toppingName, toppingImg, onMinusToppingAmount, onPlusToppingAmount } = this.props;
 
     return (
-      <div className={this.getToppingClassName()}>
+      <div data-testid="topping"
+      className={this.getToppingClassName()}>
         <img src={toppingImg} alt={toppingName} />
         <span className="topping__name">{toppingName}</span>
         <div className="topping__amount">

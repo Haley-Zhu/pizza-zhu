@@ -1,4 +1,5 @@
-import initialSize from '../initialContent/InitialSize';
+import initialSize from '../initialContent/initialSize';
+import initialDetailsInput from '../initialContent/initailDetailsInput';
 
 const initialPizzaCreatorState = {
   selectedToppings: [],
@@ -6,6 +7,7 @@ const initialPizzaCreatorState = {
     sizeStyle: initialSize.sizeStyle,
     price: initialSize.price,
   },
+  detailsInput: initialDetailsInput,
   onSubmitClicked: false,
 };
 
