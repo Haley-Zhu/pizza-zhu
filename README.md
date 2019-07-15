@@ -55,5 +55,9 @@ pizzacreator program
 
 15. input details,  reset button patch（2019/7/14）
 
+16. reset button initialize details，ErrorMessage view
+
+17. show ErrorMessage 
+
 
 

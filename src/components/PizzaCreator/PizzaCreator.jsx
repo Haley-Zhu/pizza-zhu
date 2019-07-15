@@ -18,7 +18,7 @@ class PizzaCreator extends React.Component {
 
     // this.state = initialPizzaCreatorState;
     this.state = JSON.parse(JSON.stringify(initialPizzaCreatorState)); // 深拷贝OK，不会影响details的初始值
-    this.state = Object.assign(initialPizzaCreatorState); // 浅拷贝不行，detail初始值改变
+    // this.state = Object.assign(initialPizzaCreatorState); // 浅拷贝不行，detail初始值改变
 
     this.onMinusToppingAmount = this.onMinusToppingAmount.bind(this);
     this.onPlusToppingAmount = this.onPlusToppingAmount.bind(this);
@@ -32,8 +32,8 @@ class PizzaCreator extends React.Component {
 
   setInitialStates() {
     // 这个值被update了，why？其他值都没问题，是初始值
-    console.log(initialPizzaCreatorState.detailsInput); 
-    console.log("---------------");
+    // console.log(initialPizzaCreatorState.detailsInput); 
+    // console.log("---------------");
     this.setState(initialPizzaCreatorState);
   }
 
@@ -74,9 +74,9 @@ class PizzaCreator extends React.Component {
 
     this.setDetailsInput(newDetailsInput);
 
-    console.log(initialPizzaCreatorState.detailsInput); // 随着输入变化了
-    console.log('@@@@@@@@@@@@@@@@@')
-    console.log(this.state.detailsInput);
+    // console.log(initialPizzaCreatorState.detailsInput); // 随着输入变化了
+    // console.log('@@@@@@@@@@@@@@@@@')
+    // console.log(this.state.detailsInput);
   }
 
   updateDetailsInputFocus(detailId,isFocused = true) {
@@ -169,9 +169,9 @@ class PizzaCreator extends React.Component {
     });
 
     this.setSelectedToppings(newSelectedToppings);
-    console.log(initialPizzaCreatorState.selectedToppings); // 没有变，为[]，why？
-    console.log('!!!!!!!!!!!!!!!!!!1')
-    console.log(this.state.selectedToppings);
+    // console.log(initialPizzaCreatorState.selectedToppings); // 没有变，为[]，why？
+    // console.log('!!!!!!!!!!!!!!!!!!1')
+    // console.log(this.state.selectedToppings);
   }
 
   onSelectPizzaSize(newSizeStyle) {
@@ -189,15 +189,29 @@ class PizzaCreator extends React.Component {
     }
 
     this.setSelectedSize(newSelectedSize);
-    console.log(initialPizzaCreatorState.selectedSize); // 永远变，为Small()初始，why？
-    console.log('####################333')
-    console.log(this.state.selectedSize);// 显示选择前的值
+    // console.log(initialPizzaCreatorState.selectedSize); // 永远变，为Small()初始，why？
+    // console.log('####################333')
+    // console.log(this.state.selectedSize);// 显示选择前的值
   }
+
+  isShowAtLeastOneToppingMessage() {
+    // const { onSubmitClicked: isSubmited, selectedToppings } = this.state;
+    const { selectedToppings, onSubmitClicked } = this.state;
+    // console.log(onSubmitClicked, selectedToppings)
+    if (onSubmitClicked && !selectedToppings.length) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // ErrorMessage show 3s then close，set isShowAtLeastOneToppingMessage to false
 
   render() {
     const { selectedToppings, selectedSize, detailsInput } = this.state;
-    console.log('$$$$$$$$$$$$$$$$$$$$4')
-    console.log(this.state.selectedSize); // 显示当前选择的值
+    // console.log('$$$$$$$$$$$$$$$$$$$$4')
+    // console.log(this.state.selectedSize); // 显示当前选择的值
+    console.log(this.isShowAtLeastOneToppingMessage());
 
     return (
         <div className="pizza-creator">
@@ -226,7 +240,8 @@ class PizzaCreator extends React.Component {
             setSubmitClicked={this.setSubmitClicked}
             setInitialStates={this.setInitialStates}
           />
-          {/* <ErrorMessage>Please complete your details!</ErrorMessage> */}
+          {this.isShowAtLeastOneToppingMessage() 
+            && <ErrorMessage>Please choose at least ONE topping</ErrorMessage>}
         </div>
     );
   }
