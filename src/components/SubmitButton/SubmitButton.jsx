@@ -5,7 +5,7 @@ const SubmitButton = ({
   children,
   setSubmitClicked
 }) => (
-  <button type="submit" onClick={() => setSubmitClicked(true)}>{children}</button>
+  <button type="submit" onClick={() => setSubmitClicked()}>{children}</button>
 )
 
 export default SubmitButton;

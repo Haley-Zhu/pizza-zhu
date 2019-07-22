@@ -19,7 +19,7 @@ class Size extends React.Component {
 
   render() {
     const { size, onSelectPizzaSize } = this.props;
-    const { sizeStyle, srcImg, price} = size;
+    const { sizeStyle, image:srcImg, price} = size;
 
     return (
       <div

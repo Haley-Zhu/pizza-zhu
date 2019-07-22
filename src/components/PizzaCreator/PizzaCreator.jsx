@@ -8,6 +8,7 @@ import ErrorMessage from '../ErrorMessage';
 import getToppingByName from '../../helper/getToppingByName';
 import getSizeBySizeStyle from '../../helper/getSizeBySizeStyle';
 import initialPizzaCreatorState from '../../data/initialStates/InitialPizzaCreatorState';
+import Repository from '../../lib/Repository';
 import './PizzaCreator.css';
 
 import initialDetailsInput from '../../data/initialContent/initailDetailsInput';
@@ -23,7 +24,7 @@ class PizzaCreator extends React.Component {
     this.onMinusToppingAmount = this.onMinusToppingAmount.bind(this);
     this.onPlusToppingAmount = this.onPlusToppingAmount.bind(this);
     this.onSelectPizzaSize = this.onSelectPizzaSize.bind(this);
-    this.setSubmitClicked = this.setSubmitClicked.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.getSubmitClicked = this.getSubmitClicked.bind(this);
     this.setInitialStates = this.setInitialStates.bind(this);
     this.updateDetailsInputValue = this.updateDetailsInputValue.bind(this);
@@ -59,6 +60,19 @@ class PizzaCreator extends React.Component {
     this.setState({
       onSubmitClicked,
     })
+  }
+
+  onSubmit() {
+    this.setSubmitClicked(true);
+
+    const { selectedToppings, detailsInput, selectedSize} = this.state;
+
+    console.log('detailsInput', detailsInput);
+    console.table(selectedToppings);
+    console.log('selectedSize', selectedSize);
+
+    Repository.CreatOrder(selectedToppings, selectedSize.sizeStyle, detailsInput)
+    .then(() => console.log('------Submitted'));
   }
 
   updateDetailsInputValue(detailId, inputValue) {
@@ -116,18 +130,18 @@ class PizzaCreator extends React.Component {
       }
   }
 
-  onPlusToppingAmount(selectedToppingName, value = 1) {
+  onPlusToppingAmount(newSelectedTopping, value = 1) {
     const { selectedToppings } = this.state;
 
     const selectedTopping = selectedToppings.find((selectedTopping) => (
-      selectedTopping.toppingName === selectedToppingName));
+      selectedTopping.toppingName === newSelectedTopping.toppingName));
 
       if (selectedTopping) {
-        this.updateSelectedToppings(selectedToppingName, value);
+        this.updateSelectedToppings(newSelectedTopping.toppingName, value);
         return;
       }
 
-      this.addToSelectedToppings(selectedToppingName, value);
+      this.addToSelectedToppings(newSelectedTopping, value);
   }
 
   removeFromSelectedToppings(selectedToppingName) {
@@ -140,18 +154,17 @@ class PizzaCreator extends React.Component {
     this.setSelectedToppings(newSelectedToppings);
   }
 
-  addToSelectedToppings(selectedToppingName, value) {
+  addToSelectedToppings(selectedTopping, value) {
     const { selectedToppings } = this.state;
     const selectedToppingAmount = value;
 
-    const topping = getToppingByName(selectedToppingName);
-    const { toppingPrice } = topping;
+    // const topping = getToppingByName(selectedToppingName);
+    // const { toppingPrice } = topping;
 
     const newSelectedToppings = [
       ...selectedToppings, {
-        toppingName: selectedToppingName,
+        ...selectedTopping,
         toppingAmount: selectedToppingAmount,
-        toppingPrice: toppingPrice,
       }];
 
     this.setSelectedToppings(newSelectedToppings);
@@ -211,7 +224,7 @@ class PizzaCreator extends React.Component {
     const { selectedToppings, selectedSize, detailsInput } = this.state;
     // console.log('$$$$$$$$$$$$$$$$$$$$4')
     // console.log(this.state.selectedSize); // 显示当前选择的值
-    console.log(this.isShowAtLeastOneToppingMessage());
+    // console.log(this.isShowAtLeastOneToppingMessage());
 
     return (
         <div className="pizza-creator">
@@ -237,11 +250,11 @@ class PizzaCreator extends React.Component {
             onPlusToppingAmount={this.onPlusToppingAmount}
           />
           <Buttons
-            setSubmitClicked={this.setSubmitClicked}
+            setSubmitClicked={this.onSubmit}
             setInitialStates={this.setInitialStates}
           />
-          {this.isShowAtLeastOneToppingMessage() 
-            && <ErrorMessage>Please choose at least ONE topping</ErrorMessage>}
+          {/* {this.isShowAtLeastOneToppingMessage() 
+            && <ErrorMessage>Please choose at least ONE topping</ErrorMessage>} */}
         </div>
     );
   }

@@ -9,7 +9,8 @@
     "clean": "rm -rf ./build",
     "prebuild": "npm run clean",
     "build": "webpack --mode production",
-    "cfg:webpack": "webpack --config webpack.config.js"
+    "cfg:webpack": "webpack --config webpack.config.js",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -29,20 +30,22 @@
     "babel": "^6.23.0",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
     "file-loader": "^4.0.0",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
     "url-loader": "^2.0.1",
     "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "css-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "webpack-dev-server": "^3.7.2"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   },
   "jest": {
     "moduleNameMapper": {

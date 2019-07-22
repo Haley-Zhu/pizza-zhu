@@ -9,6 +9,7 @@ class SummaryToppingItem extends React.Component {
   render() {
     const { selectedTopping, onMinusToppingAmount, onPlusToppingAmount } = this.props;
     const { toppingName, toppingAmount, toppingPrice } = selectedTopping;
+    const toppingAdd = { toppingName, toppingAmount };
 
     return (
       <li className="summary__item">
@@ -16,7 +17,7 @@ class SummaryToppingItem extends React.Component {
         <div className="item__amount">
           <button type="button" onClick={() => onMinusToppingAmount(toppingName)}>-</button>
           <span>{toppingAmount}</span>
-          <button type="button" onClick={() => onPlusToppingAmount(toppingName)}>+</button>
+          <button type="button" onClick={() => onPlusToppingAmount(toppingAdd)}>+</button>
         </div>
         <span className="item__price">${toppingPrice} * {toppingAmount}</span>
       </li>

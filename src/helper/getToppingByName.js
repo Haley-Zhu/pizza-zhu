@@ -1,7 +1,11 @@
-import ToppingsSet from '../data/toppingsSet';
+// import ToppingsSet from '../data/toppingsSet';
+import Repository from '../lib/Repository';
 
-const topping = ( name, toppings = ToppingsSet ) => (
-  toppings.find(topping => (topping.toppingName === name))
-);
+const toppingsSet = Repository.getToppingsSet();
+
+const topping = ( name, toppings = toppingsSet ) => {
+  debugger;
+  return (toppings.find(topping => (topping.toppingName === name)));
+};
 
 export default topping;
