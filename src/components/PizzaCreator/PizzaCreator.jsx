@@ -17,9 +17,11 @@ class PizzaCreator extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = initialPizzaCreatorState;
-    this.state = JSON.parse(JSON.stringify(initialPizzaCreatorState)); // 深拷贝OK，不会影响details的初始值
+    this.state = initialPizzaCreatorState;
+    // this.state = JSON.parse(JSON.stringify(initialPizzaCreatorState)); // 深拷贝OK，不会影响details的初始值
     // this.state = Object.assign(initialPizzaCreatorState); // 浅拷贝不行，detail初始值改变
+    // this.state = (...initialPizzaCreatorState); // 也是浅拷贝
+    // 由于details里面update的赋值出错了
 
     this.onMinusToppingAmount = this.onMinusToppingAmount.bind(this);
     this.onPlusToppingAmount = this.onPlusToppingAmount.bind(this);
@@ -33,6 +35,7 @@ class PizzaCreator extends React.Component {
 
   setInitialStates() {
     // 这个值被update了，why？其他值都没问题，是初始值
+    // 由于details里面update的赋值出错了
     // console.log(initialPizzaCreatorState.detailsInput); 
     // console.log("---------------");
     this.setState(initialPizzaCreatorState);
@@ -53,7 +56,7 @@ class PizzaCreator extends React.Component {
   setDetailsInput(detailsInput) {
     this.setState({
       detailsInput,
-    })
+    }, () => console.log(initialPizzaCreatorState))
   }
 
   setSubmitClicked(onSubmitClicked) {
@@ -97,11 +100,21 @@ class PizzaCreator extends React.Component {
     const { detailsInput } = this.state;
 
     const newDetailsInput = detailsInput.map((detailInput) => {
-      if (detailInput[detailId] !== undefined) {
-        detailInput.isFocused = isFocused;
+      // if (detailInput[detailId] !== undefined) {
+      //   detailInput.isFocused = isFocused;
+      // }
+      // --------------以上的是直接reference赋值---------------------
+
+      if (detailInput[detailId] === undefined) {
+        return detailInput;
       }
 
-      return detailInput;
+      const newDetail = {
+        ...detailInput,
+        isFocused,
+      };
+
+      return newDetail;
     });
 
     this.setDetailsInput(newDetailsInput);

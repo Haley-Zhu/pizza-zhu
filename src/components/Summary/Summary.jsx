@@ -43,7 +43,7 @@ const Summary = ({
     <hr/>
     <div className="summary__total">
       <span>Total</span>
-      <span className="item__price">${totalPrice}</span>
+      <span data-testid="summary-total" className="item__price">${totalPrice}</span>
     </div>
   </section>
 )}

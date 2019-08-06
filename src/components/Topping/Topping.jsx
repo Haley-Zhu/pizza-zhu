@@ -20,8 +20,8 @@ class Topping extends React.Component {
   getAmount() {
     let amount = 0; 
 
-    if (this.props.selectedTopping) {
-      const { selectedTopping } = this.props;
+    if (this.props.selectedToppings) {
+      const { selectedToppings } = this.props;
 
       amount = selectedTopping.toppingAmount;
     }
@@ -36,12 +36,12 @@ class Topping extends React.Component {
     return (
       <div data-testid="topping"
       className={this.getToppingClassName()}>
-        <img src={toppingImg} alt={toppingName} />
-        <span className="topping__name">{toppingName}</span>
+        <img data-testid="topping-img" src={toppingImg} alt={toppingName} />
+        <span data-testid="topping-name" className="topping__name">{toppingName}</span>
         <div className="topping__amount">
-          <button type="button" onClick={() => onMinusToppingAmount(toppingName)}>-</button>
-          <span>{this.getAmount()}</span>
-          <button type="button" onClick={() => onPlusToppingAmount(toppingAdd)}>+</button>
+          <button data-testid="topping-amountMinus" type="button" onClick={() => onMinusToppingAmount(toppingName)}>-</button>
+          <span data-testid="topping-amount">{this.getAmount()}</span>
+          <button data-testid="topping-amountPlus" type="button" onClick={() => onPlusToppingAmount(toppingAdd)}>+</button>
         </div>
       </div>
     );
