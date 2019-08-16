@@ -4,7 +4,7 @@ This project was React App.
 
 ## Available Scripts
 
-you need to run first
+you need to run [pizza-zhu-api](<https://github.com/Haley-Zhu/pizza-zhu-api>) first
 
 
 
