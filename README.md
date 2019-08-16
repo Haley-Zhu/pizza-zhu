@@ -1,65 +1,20 @@
-# pizza-zhu
-pizzacreator program
-
-1. css & html
-
-   add assets folder(contains images);
-
-   add index.html
-
-   add details section css & html of index.html
-
-2. css & html
-
-   add size section css & html of index.html
-
-3. css & html
-
-   add toppings section css & html of index.html
-
-4. css & html
-
-   1st draft of html completed（2019/7/4）
-
-5. environment
-
-   config environment
-
-   - webpack, babel, react
-
-6. react（stateless）
-
-   complete Sizes，Details，SubmitButtom
-
-7. react（stateless）
-
-   complete Toppings
-
-8. react（stateless）
-
-   complete Summary
-
-   1st stateless react completed （2019/7/9）
-   
-9. topping amount plus and minus
-
-10. rise topping state to PizzaCreator（2019/7/12）
-
-11. split toppings update function to add and remove
-
-12. summary item
-
-13. select size，summary size，summary total
-
-14. input details,  reset button
-
-15. input details,  reset button patch（2019/7/14）
-
-16. reset button initialize details，ErrorMessage view
-
-17. show ErrorMessage 
-
-18. import data from db and upload data to db (toppings, size, creat Odrer)
+This project was React App.
 
 
+
+## Available Scripts
+
+you need to run first
+
+
+
+In this project derectory, you can run
+
+### `npm install`
+
+### `npm run start:dev`
+
+Runs the app in the development mode.
+
+Open [http://localhost:8080](http://localhost:8080/) to view it in the browser.
 
