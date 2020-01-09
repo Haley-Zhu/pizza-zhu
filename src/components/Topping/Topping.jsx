@@ -20,8 +20,8 @@ class Topping extends React.Component {
   getAmount() {
     let amount = 0; 
 
-    if (this.props.selectedToppings) {
-      const { selectedToppings } = this.props;
+    if (this.props.selectedTopping) {
+      const { selectedTopping } = this.props;
 
       amount = selectedTopping.toppingAmount;
     }

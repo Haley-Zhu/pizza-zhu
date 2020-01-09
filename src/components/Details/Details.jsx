@@ -2,7 +2,14 @@ import React from 'react';
 import Title from '../Title';
 import Input from '../Input';
 import DetailsSet from '../../data/detailsSet';
-import './Details.css';
+import styled from 'styled-components';
+// import './Details.css';
+
+const DetailsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 2rem;
+`;
 
 
 const Details = ({ 
@@ -13,7 +20,7 @@ const Details = ({
 }) => (
     <section className="details">
       <Title>Enter your details</Title>
-      <div className="details-container">
+      <DetailsContainer>
         {DetailsSet.map(detail => {
           const detailInput = detailsInput.find(detailInput => (
             detailInput.hasOwnProperty(detail.detailId)));
@@ -27,7 +34,7 @@ const Details = ({
             setIsFocus={updateDetailsInputFocus}
           />)
         })}
-      </div>
+      </DetailsContainer>
     </section>
   )
 

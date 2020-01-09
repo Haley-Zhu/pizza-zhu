@@ -9,9 +9,14 @@ import getToppingByName from '../../helper/getToppingByName';
 import getSizeBySizeStyle from '../../helper/getSizeBySizeStyle';
 import initialPizzaCreatorState from '../../data/initialStates/InitialPizzaCreatorState';
 import Repository from '../../lib/Repository';
-import './PizzaCreator.css';
+import styled from 'styled-components';
+// import './PizzaCreator.css';
 
 import initialDetailsInput from '../../data/initialContent/initailDetailsInput';
+
+const PizzaCreatorContainer = styled.div`
+  padding: 20px 40px;
+`;
 
 class PizzaCreator extends React.Component {
   constructor(props) {
@@ -240,7 +245,7 @@ class PizzaCreator extends React.Component {
     // console.log(this.isShowAtLeastOneToppingMessage());
 
     return (
-        <div className="pizza-creator">
+        <PizzaCreatorContainer>
           <Details 
             updateDetailsInputValue={this.updateDetailsInputValue}
             getSubmitClicked={this.getSubmitClicked} 
@@ -268,7 +273,7 @@ class PizzaCreator extends React.Component {
           />
           {/* {this.isShowAtLeastOneToppingMessage() 
             && <ErrorMessage>Please choose at least ONE topping</ErrorMessage>} */}
-        </div>
+        </PizzaCreatorContainer>
     );
   }
 }
